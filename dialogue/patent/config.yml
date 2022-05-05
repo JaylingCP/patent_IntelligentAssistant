@@ -1,0 +1,29 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+
+language: "zh"
+pipeline:
+  - name: JiebaTokenizer
+    dictionary_path: "./dict"
+  - name: "RegexFeaturizer"
+  - name: "CRFEntityExtractor"
+  - name: "EntitySynonymMapper"
+  - name: "CountVectorsFeaturizer"
+  - name: "CountVectorsFeaturizer"
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: "EmbeddingIntentClassifier"
+    epochs: 250
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: FormPolicy
+  - name: FallbackPolicy
+    nlu_threshold: 0.9
+    ambiguity_threshold: 0.1
+    core_threshold: 0.5
+  - name: MemoizationPolicy
+  - name: MappingPolicy
+  - name: KerasPolicy

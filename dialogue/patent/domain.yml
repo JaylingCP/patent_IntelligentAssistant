@@ -1,0 +1,44 @@
+actions:
+- utter_default
+- utter_goodbye
+- utter_greet
+- utter_thanks
+entities:
+- top
+
+intents:
+- patent-search_state:
+    use_entities:
+    - top
+- patent-goodbye
+- patent-return
+
+responses:
+  utter_default:
+  - text: 您说什么，小格听不懂。#
+  - text: 你说的小格不懂呀！#
+  - text: 不好意思，您能换个说法吗？#
+  utter_goodbye:
+  - text: 再见，为您服务很开心^
+  - text: Bye， 期待下次再见哟^
+  - text: 再见主人， 小格很开心为您服务^
+  - text: 拜拜， 很高兴为您服务^
+  - text: 拜拜， 记得常来找小格玩^
+  - text: 再见， 小格会朝着优秀的助手努力的哟^
+  utter_greet:
+  - text: 您好! 我是智能助手小格，很高兴为您服务
+  - text: 你好! 我是小格，可以帮您做些什么
+  - text: hi! 我是小格，有什么可以帮您吗
+  utter_thanks:
+  - text: 不用谢
+  - text: 我应该做的
+  - text: 您开心我就开心
+  - text: 客气啦，能帮到您，小格很开心呢
+  - text: 不客气，这是小格应该做的
+  - text: 小格很乐意为您效劳哟
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 30
+slots:
+  top:
+    type: list
